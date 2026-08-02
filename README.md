@@ -6,7 +6,7 @@ Every day you check off a habit, you're kindling a small fire that keeps burning
 
 ## Status
 
-🚧 **Early build.** Currently just the project skeleton — API, database, and frontend are wired together and running, but there are no habits yet. See [Roadmap](#roadmap).
+🚧 **Early build.** You can add, rename, and delete habits. No check-ins or streaks yet. See [Roadmap](#roadmap).
 
 ## Stack
 
@@ -27,7 +27,7 @@ Data persists in a Docker volume (`kindle-data`) between restarts.
 ## Roadmap
 
 - [x] **M0** — project skeleton: Go API + React + SQLite + Docker, end-to-end health check
-- [ ] **M1** — habit CRUD (add / edit / delete)
+- [x] **M1** — habit CRUD (add / edit / delete)
 - [ ] **M2** — daily check-ins, streaks, per-habit progress rings
 - [ ] **M3** — aggregate Wellness Score with a living flame visual
 - [ ] **M4** — design polish pass

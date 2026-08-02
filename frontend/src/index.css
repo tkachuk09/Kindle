@@ -6,5 +6,27 @@
 
 body {
   margin: 0;
-  background: #0b0a0d;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(120, 53, 15, 0.25), transparent 70%),
+    #050505;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@keyframes flame-flicker {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.flame-text {
+  background: linear-gradient(90deg, #78350f, #9a3412, #7c2d12, #92400e, #78350f);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: flame-flicker 3s linear infinite;
 }

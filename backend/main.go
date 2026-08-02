@@ -32,6 +32,11 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /alive", healthHandler(db))
 
+	mux.HandleFunc("GET /api/habits", listHabitsHandler(db))
+	mux.HandleFunc("POST /api/habits", createHabitHandler(db))
+	mux.HandleFunc("PUT /api/habits/{id}", updateHabitHandler(db))
+	mux.HandleFunc("DELETE /api/habits/{id}", deleteHabitHandler(db))
+
 	staticDir := getEnv("STATIC_DIR", "./web")
 	mux.Handle("/", spaHandler(staticDir))
 
