@@ -1,0 +1,11 @@
+services:
+  kindle:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - kindle-data:/data
+    restart: unless-stopped
+
+volumes:
+  kindle-data:
