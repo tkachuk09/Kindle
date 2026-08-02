@@ -30,7 +30,7 @@ func main() {
 	}
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /api/health", healthHandler(db))
+	mux.HandleFunc("GET /alive", healthHandler(db))
 
 	staticDir := getEnv("STATIC_DIR", "./web")
 	mux.Handle("/", spaHandler(staticDir))
