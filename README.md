@@ -6,12 +6,12 @@ Every day you check off a habit, you're kindling a small fire that keeps burning
 
 ## Status
 
-🚧 **Early build.** You can add, rename, and delete habits. No check-ins or streaks yet. See [Roadmap](#roadmap).
+🚧 **Early build.** The landing page (`/`) is just an animated intro; habits are managed on a separate page (`/app`) — add / rename / delete. No check-ins or streaks yet. See [Roadmap](#roadmap).
 
 ## Stack
 
 - **Backend:** Go, plain `net/http`, SQLite (pure-Go driver, no CGO)
-- **Frontend:** React + Vite + Tailwind CSS + Framer Motion
+- **Frontend:** React + Vite + Tailwind CSS + Framer Motion, Space Grotesk for display type
 - **Packaging:** single Docker image (multi-stage build), one container, one volume for the SQLite file — no external services, no domain, runs entirely on your machine
 
 ## Running it

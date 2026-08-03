@@ -19,7 +19,7 @@ function Hero() {
             className="inline-block"
             initial={{ y: 70, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.1, delay: 0.3 + i * 0.14, ease: EASE }}
+            transition={{ duration: 0.95, delay: 0.3 + i * 0.11, ease: EASE }}
           >
             {char}
           </motion.span>
@@ -29,7 +29,7 @@ function Hero() {
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.9, ease: EASE }}
+        transition={{ duration: 0.8, delay: 1.6, ease: EASE }}
         className="relative mt-4 text-sm tracking-[0.2em] text-neutral-500 uppercase"
       >
         steady fire. steady mind.

@@ -11,7 +11,6 @@ function colorFor(index) {
 function HabitList() {
   const [habits, setHabits] = useState([])
   const [name, setName] = useState('')
-  const [icon, setIcon] = useState('')
   const [editingId, setEditingId] = useState(null)
   const [editingName, setEditingName] = useState('')
   const [error, setError] = useState(null)
@@ -29,12 +28,11 @@ function HabitList() {
     try {
       const habit = await createHabit({
         name: trimmed,
-        icon: icon.trim(),
+        icon: '',
         color: colorFor(habits.length),
       })
       setHabits((prev) => [...prev, habit])
       setName('')
-      setIcon('')
     } catch (e) {
       setError(e.message)
     }
@@ -72,13 +70,6 @@ function HabitList() {
     <div className="w-full max-w-md mx-auto">
       <form onSubmit={handleAdd} className="flex gap-2 mb-6">
         <input
-          value={icon}
-          onChange={(e) => setIcon(e.target.value)}
-          placeholder="🔥"
-          maxLength={2}
-          className="w-12 rounded-lg bg-neutral-900 border border-neutral-800 text-center text-lg text-neutral-100 focus:outline-none focus:border-amber-500/50"
-        />
-        <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Add a habit..."
@@ -107,11 +98,9 @@ function HabitList() {
               className="flex items-center gap-3 rounded-lg bg-neutral-900/60 border border-neutral-800 px-4 py-3 group"
             >
               <span
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm"
-                style={{ backgroundColor: `${h.color}22`, color: h.color }}
-              >
-                {h.icon || '·'}
-              </span>
+                className="h-2.5 w-2.5 shrink-0 rounded-full"
+                style={{ backgroundColor: h.color }}
+              />
 
               {editingId === h.id ? (
                 <input
@@ -123,21 +112,25 @@ function HabitList() {
                   className="flex-1 bg-transparent border-b border-neutral-700 text-neutral-100 focus:outline-none"
                 />
               ) : (
-                <span
-                  className="flex-1 cursor-text text-neutral-200"
-                  onClick={() => startEdit(h)}
-                >
-                  {h.name}
-                </span>
+                <span className="flex-1 text-neutral-200">{h.name}</span>
               )}
 
-              <button
-                onClick={() => handleDelete(h.id)}
-                className="text-neutral-600 opacity-0 group-hover:opacity-100 hover:text-red-400 transition-all"
-                aria-label="Delete habit"
-              >
-                ✕
-              </button>
+              <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all">
+                <button
+                  onClick={() => startEdit(h)}
+                  className="text-neutral-600 hover:text-amber-200"
+                  aria-label="Edit habit"
+                >
+                  ✎
+                </button>
+                <button
+                  onClick={() => handleDelete(h.id)}
+                  className="text-neutral-600 hover:text-red-400"
+                  aria-label="Delete habit"
+                >
+                  ✕
+                </button>
+              </div>
             </motion.li>
           ))}
         </AnimatePresence>
